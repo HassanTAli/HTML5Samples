@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAP 3</title>
+    <script>
+        window.addEventListener("unload", () => {
+            incCounter()
+        })
+
+        function incCounter() {
+            if (localStorage.counter) {
+                localStorage.counter = Number(localStorage.counter) + 1
+            } else {
+                localStorage.counter = 1;
+            }
+            counterInc.innerHTML = localStorage.counter;
+        }
+    </script>
+</head>
+
+<body>
+    <p>how many this page been reloaded</p>
+    <div id="counterInc"></div>
+    <script>
+        if (localStorage.counter)
+            counterInc.innerHTML = localStorage.counter
+    </script>
+</body>
+
+
+</html>

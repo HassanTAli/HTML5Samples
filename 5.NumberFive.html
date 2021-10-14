@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAP 5</title>
+    <script>
+        let db = openDatabase("onlineStore", "1.1", "Store system v1", 24 * 1024 * 1024);
+
+        db.transaction(function (tx) {
+            tx.executeSql(
+                "create table if not exists items (id int primary key,name varchar(200) , amount int)",
+                null,
+                function (tx, result) {
+                    tx.executeSql("insert into items (id,name,amount) values (?,?,?)", [1, "Laptop", 200])
+                    tx.executeSql("insert into items (id,name,amount) values (?,?,?)", [2, "PC", 150])
+                },
+                function (tx, error) {
+                    console.log(error);
+                });
+
+            tx.executeSql(
+                "create table if not exists items (id int primary key,name varchar(200) , price int, quantity int)",
+                null,
+                function (tx, result) {},
+                function (tx, error) {
+                    console.log(error);
+                });
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
